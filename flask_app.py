@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 FILE_NAME = 'data/footfall_data.json'
 # 影片上傳資料夾
-VIDEO_UPLOAD_FOLDER = './clients_video'
+VIDEO_UPLOAD_FOLDER = '/tep/videos'
 # 人流資料上傳資料夾
 UPLOAD_FOLDER = './uploads'
 
@@ -247,4 +247,4 @@ def upload_video():
     }), 201
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
