@@ -12,6 +12,26 @@ matplotlib.use('Agg')
 
 app = Flask(__name__)
 
+# 加在這裡：啟動時印出環境資訊 + 每次請求都紀錄 + 全域錯誤處理
+print("="*50)
+print(f"Flask server is starting...")
+print(f"Current working directory: {os.getcwd()}")
+print(f"Video upload folder: {app.config.get('VIDEO_UPLOAD_FOLDER')}")
+print("="*50)
+
+@app.before_request
+def log_request_info():
+    print(f"[{datetime.now()}] Incoming request: {request.method} {request.url}")
+    print(f"Headers: {dict(request.headers)}")
+    if request.method == 'POST':
+        print(f"Form data: {request.form}")
+        print(f"Files: {request.files}")
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    print(f"[{datetime.now()}] Unhandled Exception: {str(e)}")
+    return {"error": "Internal Server Error", "details": str(e)}, 500
+
 FILE_NAME = 'data/footfall_data.json'
 # 影片上傳資料夾
 VIDEO_UPLOAD_FOLDER = '/tmp/videos'
