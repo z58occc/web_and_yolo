@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 FILE_NAME = 'data/footfall_data.json'
 # 影片上傳資料夾
-VIDEO_UPLOAD_FOLDER = '/tep/videos'
+VIDEO_UPLOAD_FOLDER = '/tmp/videos'
 # 人流資料上傳資料夾
 UPLOAD_FOLDER = './uploads'
 
