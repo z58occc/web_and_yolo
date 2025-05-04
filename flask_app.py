@@ -7,10 +7,13 @@ import io
 import os
 import matplotlib
 from count_footfall.process import process_video
+from flask_cors import CORS
 
 matplotlib.use('Agg')
 
 app = Flask(__name__)
+CORS(app)
+
 
 # 加在這裡：啟動時印出環境資訊 + 每次請求都紀錄 + 全域錯誤處理
 print("="*50)
